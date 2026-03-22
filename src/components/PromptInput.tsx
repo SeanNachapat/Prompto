@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import { Send, Zap, SquareSlash } from "lucide-react";
+import placeholders from "@/data/placeholders.json";
 
 interface PromptInputProps {
   initialValue?: string;
@@ -11,6 +12,10 @@ interface PromptInputProps {
 export default function PromptInput({ initialValue = "", onSubmit }: PromptInputProps) {
   const [text, setText] = useState(initialValue);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  const randomPlaceholder = useMemo(() => {
+    return placeholders[Math.floor(Math.random() * placeholders.length)];
+  }, []);
 
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
@@ -27,7 +32,7 @@ export default function PromptInput({ initialValue = "", onSubmit }: PromptInput
           ref={textareaRef}
           value={text}
           onChange={handleInput}
-          placeholder="Craft your prompt here..."
+          placeholder={randomPlaceholder}
           className="w-full bg-transparent border-none focus:ring-0 text-foreground placeholder:text-zinc-600 resize-none min-h-[140px] max-h-[600px] text-lg leading-relaxed scrollbar-hide py-2"
           rows={1}
         />
