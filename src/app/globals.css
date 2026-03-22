@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: #121212;
+  --color-accent: #EB4C42;
+  --color-accent-hover: #D43D35;
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+}
+
+:root {
+  --background: #0A0A0A;
+  --foreground: #F5F5F5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0A0A0A;
+    --foreground: #F5F5F5;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
+}
+
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+.animate-bounce-subtle {
+  animation: bounce-subtle 3s ease-in-out infinite;
+}
+
+.flat-card {
+  background: #121212;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
