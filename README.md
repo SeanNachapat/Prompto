@@ -1,0 +1,2 @@
+# Prompto
+AI prompt designer
